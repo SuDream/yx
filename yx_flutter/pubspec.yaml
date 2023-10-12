@@ -1,0 +1,34 @@
+name: yx_flutter
+description: A new Flutter project.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_localizations:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+      # Flutter 屏幕适配
+  flutter_screenutil: ^5.7.0
+    # 图片缓存 https://github.com/renefloor/flutter_cached_network_image
+  cached_network_image: ^3.2.3
+    # 状态管理 https://pub-web.flutter-io.cn/packages/get
+  get: ^4.6.5
+  #本地储存 https://github.com/Sky24n/sp_util
+  sp_util: ^2.0.3 
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
