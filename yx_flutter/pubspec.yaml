@@ -16,8 +16,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-      # Flutter 屏幕适配
+  flutter_lints: ^2.0.0
+   # Flutter 屏幕适配
   flutter_screenutil: ^5.7.0
     # 图片缓存 https://github.com/renefloor/flutter_cached_network_image
   cached_network_image: ^3.2.3
@@ -25,7 +25,11 @@ dev_dependencies:
   get: ^4.6.5
   #本地储存 https://github.com/Sky24n/sp_util
   sp_util: ^2.0.3 
-  flutter_lints: ^2.0.0
+  # 轮播图 https://pub.flutter-io.cn/packages/flutter_swiper
+  card_swiper: ^3.0.1
+  # 加载web https://pub-web.flutter-io.cn/packages/webview_flutter
+  webview_flutter: ^4.4.1
+ 
 
 flutter:
   uses-material-design: true

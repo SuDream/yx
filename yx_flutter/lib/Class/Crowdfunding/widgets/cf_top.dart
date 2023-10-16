@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:yx_flutter/Class/Common/public_func.dart';
 import 'package:get/get.dart';
 import 'package:yx_flutter/Class/res/gaps.dart';
 import '../../Common/image_utils.dart';
 import '../../Common/yx_constant.dart';
 import '../../i18n/keys.dart';
+import 'package:card_swiper/card_swiper.dart';
 
 class CFTopV extends StatelessWidget {
   const CFTopV({super.key});
@@ -14,7 +13,7 @@ class CFTopV extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [tips(), naviType(),naviTools()],
+      children: [tips(), naviType(), naviTools(),buildSwiper()],
     );
   }
 
@@ -125,28 +124,88 @@ class CFTopV extends StatelessWidget {
   }
 
   Widget naviTools() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [nTItem('', ''),nTItem('', ''),nTItem('', ''),nTItem('', '')],
-      
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          nTItem('mt2', '酒水馆'),
+          nTItem('mt2', '酒水馆'),
+          nTItem('mt2', '酒水馆'),
+          nTItem('mt2', '酒水馆', isShow: true),
+          nTItem('mt2', '酒水馆')
+        ],
+      ),
     );
   }
 
-  Widget nTItem(image, title) {
+  Widget nTItem(image, title, {isShow}) {
     return Container(
       child: Column(
         children: [
           Stack(
+            clipBehavior: Clip.none,
+            alignment: Alignment.topRight,
             children: [
               Container(
-                width: CW(80),
-                height: CW(80),
+                alignment: Alignment.center,
+                width: CW(60),
+                height: CW(60),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(CW(45)), color: reds),
-              )
+                    borderRadius: BorderRadius.circular(CW(45)),
+                    color: cswColor),
+                child: LoadImage(
+                  image,
+                  width: CW(40),
+                  height: CW(40),
+                  fit: BoxFit.contain,
+                  format: "jpg",
+                ),
+              ),
+              if (isShow ?? false)
+                Positioned(
+                  top: CW(3),
+                  left: CW(33),
+                  child: Container(
+                    height: CW(11),
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.symmetric(horizontal: CW(3)),
+                    decoration: BoxDecoration(
+                        color: rgba(62, 62, 62, 1),
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(CW(9)),
+                            topLeft: Radius.circular(CW(9)),
+                            bottomRight: Radius.circular(CW(9)))),
+                    child: StText(LocaleKeys.zzrz.tr, fs: 8, color: cswColor),
+                  ),
+                )
             ],
-          )
+          ),
+          Gaps.vGap8,
+          StText(title, fs: 12, color: singleRgba(102))
         ],
+      ),
+    );
+  }
+
+  Widget buildSwiper() {
+    return Container(
+      height: CW(50),
+      padding:const EdgeInsets.symmetric(horizontal: 15),
+      margin: const EdgeInsets.only(bottom: 10),
+      child: Swiper(
+        itemBuilder: (BuildContext context, int index) {
+          return Image.network(
+            "https://via.placeholder.com/350x150",
+            fit: BoxFit.fill,
+          );
+        },
+        itemCount: 3,
+        pagination: const SwiperPagination(
+            builder: DotSwiperPaginationBuilder(
+                color: cswColor,
+                activeColor: Color.fromRGBO(229, 212, 186, 1)))
+
       ),
     );
   }

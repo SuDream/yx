@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -89,4 +91,7 @@ Widget StText(String title,
 //-----------------------  方法 --------------------------------
 Color rgba(int r, int g, int b, double opacity) {
   return Color.fromRGBO(r, g, b, opacity);
+}
+Color singleRgba(int c) {
+  return Color.fromRGBO(c, c, c, 1);
 }

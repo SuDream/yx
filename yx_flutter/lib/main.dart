@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import  'package:get/get.dart';
+import 'package:yx_flutter/Class/Common/test2.dart';
 import 'package:yx_flutter/Class/i18n/translation.dart';
 
+import 'Class/Common/test.dart';
 import 'Class/Crowdfunding/pages/crowdfunding.dart';
 
 void main() {
@@ -18,6 +20,7 @@ class MainApp extends StatelessWidget {
         // initialBinding: AllGlobalCtrBinding(),
         // theme: ThemeData(primaryColor: ColorsUtils.main_color),
         home:const CrowdfundingPage(),
+        // home: Test2(),
         debugShowCheckedModeBanner: false,
         popGesture: true,
         transitionDuration: const Duration(milliseconds: 450),
